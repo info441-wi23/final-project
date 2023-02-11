@@ -9,4 +9,24 @@ We aim to create a safe, collaborative forum where fellow students can discuss a
 As developers, we want to build this application out of our passion for the University of Washington - Seattle campus. We also want to provide fellow students the opportunity to discover the best parts of campus for studying, because we have experienced our own struggles with finding places to study.
 
 # Technical Description
+
+## Architectural Diagram
 ![Architectural Diagram](Architectural-Diagram.png)
+
+## User Stories
+| Priority | User | Description | Technical Implementation |
+|:---------|:-----|:------------|:-------------------------|      
+| P0       | As a UW Student, | I want to |
+| P0       | As a UW Student, | I want to |
+| P1       | As a UW Student, | I want to |
+| P2       | As a UW Student, | I want to |
+| P2       | As a UW Student, | I want to |
+| P3       | As a UW Student, | I want to |
+
+## End Points
+| Endpoint | Notes |
+|:---------|:------|
+|/users/ (POST) | Create new user
+
+
+
