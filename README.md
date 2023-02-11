@@ -28,5 +28,23 @@ As developers, we want to build this application out of our passion for the Univ
 |:---------|:------|
 |/users/ (POST) | Create new user
 
+# Appendix
+## Database Schemas
+**StudySpot** =  new mongoose.Schema({
+	name : String,
+	address : String,
+	review: String,
+	initialRating: Number,
+	ratingList: Array,
+	avgRating: Number,
+	author: String,
+	dateCreated: Date
+})
+
+
+**User** = new mongoose.Schema({
+	name : String,
+	Bookmarks: Array
+})
 
 
