@@ -16,13 +16,13 @@ As developers, we want to build this application out of our passion for the Univ
 ## User Stories
 | Priority | User | Description | Technical Implementation |
 |:---------|:-----|:------------|:-------------------------|      
-| P0       | As a UW Student, | I want to review study spots with a star rating. (a user can only review a unique spot once) | Take user input and post it to **MongoDB**.
-| P0       | As a UW Student, | I want to review study spots with text. (a user can only review a unique spot once) | Take user input and post it to **MongoDB**.
-| P0       | As a UW Student, | I want to add a new study spot location to the website. | Take user input (location) and post it to **MongoDB**.
-| P1       | As a UW Student, | I want to be able to login/logout/create an account | We will use **Microsoft** authentication.
-| P2       | As a UW Student, | I want to edit or remove reviews | Use remove() from **MongoDB** with the query of user name in the location reviews.
-| P2       | As a UW Student, | I want to sort study spots available | GET a list of existing study spots from **MongoDB**, then sort by user choice (alphabetical, rating, etc.)
-| P3       | As a UW Student, | I want to save or bookmark study spots I see on the site so I can remember which ones I like. | Each user will have an object stored in **MongoDB** representing them. There will be an attribute called “bookmarks” which points to an array of study spots.
+| P0       | As a UW Student, | I want to be able to rate study spots with a star rating. | Take user input (an int) and post it to MongoDB.
+| P0       | As a UW Student, | I want to review study spots with text. (a user can only review a unique spot once) | Take user input and post it to MongoDB.
+| P0       | As a UW Student, | I want to add a new study spot location to the website. | Take user input (location) and post it to MongoDB.
+| P1       | As a UW Student, | I want to be able to login/logout/create an account | We will use Microsoft authentication.
+| P2       | As a UW Student, | I want to edit or remove reviews | Use remove() from MongoDB with the query of user name in the location reviews.
+| P2       | As a UW Student, | I want to sort study spots available | GET a list of existing study spots from MongoDB, then sort by user choice (alphabetical, rating, etc.)
+| P3       | As a UW Student, | I want to save or bookmark study spots I see on the site so I can remember which ones I like. | Each user will have an object stored in MongoDB representing them. There will be an attribute called “bookmarks” which points to an array of study spots.
 
 ## End Points
 | Endpoint | Notes |
@@ -55,6 +55,14 @@ As developers, we want to build this application out of our passion for the Univ
 **User** = new mongoose.Schema({
 	name : String,
 	Bookmarks: Array
+})
+
+**Review** = new mongoose.Schema({
+	Name: String,
+	Author: String, 
+	reviewText: String,
+	Rating: Int,
+	dateCreated: Date
 })
 
 
