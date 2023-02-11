@@ -31,7 +31,7 @@ As developers, we want to build this application out of our passion for the Univ
 # Appendix
 ## Database Schemas
 **StudySpot** =  new mongoose.Schema({
-	name : String,
+    name : String,
 	address : String,
 	review: String,
 	initialRating: Number,
