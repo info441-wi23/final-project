@@ -1,6 +1,6 @@
 # Project Description
 
-## Problem:
+## Problem
 Finding study spots on college campuses is difficult, especially at the University of Washington where there are over 500 buildings. Study spots are where you maximize your productivity, in an environment of people with similar goals. It can be challenging to ask others where their go-to study spots are, and there’s no list of valuable spots readily-available at your fingertips. As a result, college students have to go out and discover favorable study spots themselves, which can take a long time at big campuses such as UW Seattle.
 
 ## Solution
