@@ -16,7 +16,7 @@ As developers, we want to build this application out of our passion for the Univ
 ## User Stories
 | Priority | User | Description | Technical Implementation |
 |:---------|:-----|:------------|:-------------------------|      
-| P0       | As a UW Student, | I want to review study spots with a star rating. (a user can only review a unique spot once) | Take user input and post it to MongoDB.
+| P0       | As a UW Student, | I want to be able to rate study spots with a star rating. | Take user input (an int) and post it to MongoDB.
 | P0       | As a UW Student, | I want to review study spots with text. (a user can only review a unique spot once) | Take user input and post it to MongoDB.
 | P0       | As a UW Student, | I want to add a new study spot location to the website. | Take user input (location) and post it to MongoDB.
 | P1       | As a UW Student, | I want to be able to login/logout/create an account | We will use Microsoft authentication.
@@ -48,7 +48,7 @@ As developers, we want to build this application out of our passion for the Univ
 	Bookmarks: Array
 })
 
-Review = mongoose.Schema({
+**Review** = mongoose.Schema({
 	Name: String,
 	Author: String, 
 	reviewText: String,
