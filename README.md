@@ -48,4 +48,12 @@ As developers, we want to build this application out of our passion for the Univ
 	Bookmarks: Array
 })
 
+Review = mongoose.Schema({
+	Name: String,
+	Author: String, 
+	reviewText: String,
+	Rating: Int,
+	dateCreated: Date
+})
+
 
