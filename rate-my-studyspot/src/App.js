@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import HomePage from './pages/homepage';
+
+const fakeCardData = [
+  {name: 'Test', avgRating: '4.5'},
+  {name: 'Card', avgRating: '4.5'},
+  {name: 'Using', avgRating: '4.5'},
+  {name: 'Fake', avgRating: '4.5'},
+  {name: 'Data', avgRating: '4.5'},
+  {name: 'Test', avgRating: '4.5'},
+  {name: 'Test', avgRating: '4.5'},
+  {name: 'Test', avgRating: '4.5'},
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePage cards={fakeCardData}/>
     </div>
   );
 }

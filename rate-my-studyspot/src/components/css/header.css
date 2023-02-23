@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8E8E8;
+    height: 125px;
+}
+
+.title {
+    padding: 10px;
+    font-size: 28px;
+}
+
+.call-to-action {
+    padding: 10px;
+}
+
+.call-to-action > button {
+    font-size: 18px;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
