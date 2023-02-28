@@ -1,5 +1,5 @@
 import './css/studyspotcard.css'
-
+import React, { Component }  from 'react';
 /**
  * 
  * Study Spot Card Schema

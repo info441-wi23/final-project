@@ -1,5 +1,5 @@
 import './css/header.css'
-
+import React, { Component }  from 'react';
 export default function Header() {
 
     const handleLogIn = () => {
