@@ -4,16 +4,14 @@ import './css/homepage.css'
 
 export default function HomePage(props) {
 
-    const handleAddLocation = async () => {
+    const handleAddLocation = () => {
         //alert('handles add location @ /create (POST)')
-        let responseJson = await fetchJSON(`api/$`, {
-        method: "POST",
-        body: {postID: postID, newComment: newComment}
-    })
+        
     }
     return (
         <div className="home-page">
             <div className="add-card">
+                
                 <button
                     onMouseEnter={(event) => {
                         handleMouseEvent(event, {
