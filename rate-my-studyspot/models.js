@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// connect to websharer mongodb database 
 await mongoose.connect("mongodb+srv://tdao09:info441@cluster0.4pqdilx.mongodb.net/?retryWrites=true&w=majority");
 console.log("successfully connected to final project");
 
