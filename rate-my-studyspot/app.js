@@ -1,5 +1,6 @@
 import models from "./models.js";
 import express from "express";
+import cors from 'cors'
 import path from "path";
 
 import msIdExpress from "microsoft-identity-express";
@@ -8,10 +9,16 @@ import sessions from "express-session";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+import locationRouter from './javascripts/routes/controllers/location.js'
+import createRouter from './javascripts/routes/controllers/create.js'
+import { create } from "domain";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 var app = express();
+app.use(express.json())
+app.use(cors())
 
 app.use((req, res, next) => {
     req.models = models;
@@ -30,5 +37,8 @@ app.get("/", (req, res) => {
 app.get('/', (req, res) => {
     res.send('api home')
 })
+
+app.use('/location', locationRouter)
+app.use('/create', createRouter)
 
 app.listen(process.env.PORT || 8080);

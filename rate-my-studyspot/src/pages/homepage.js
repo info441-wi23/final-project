@@ -1,18 +1,19 @@
 import StudySpotCard from "../components/studyspotcard";
-import React from 'react';
+import React, { useState } from 'react';
 import './css/homepage.css'
+import CreateLocation from "../components/createlocation";
 
 export default function HomePage(props) {
 
-    const handleAddLocation = () => {
-        //alert('handles add location @ /create (POST)')
+    const [toggleForm, setToggleForm] = useState(false)
 
+    const handleFormToggle = () => {
+        setToggleForm(!toggleForm)
     }
 
     return (
         <div className="home-page">
             <div className="add-card">
-
                 <button
                     onMouseEnter={(event) => {
                         handleMouseEvent(event, {
@@ -24,11 +25,30 @@ export default function HomePage(props) {
                             params: { backgroundColor: '#EEE', color: '#000', cursor: '' }
                         })
                     }}
-                    onClick={handleAddLocation}
+                    onClick={handleFormToggle}
+                >
+                    Add Location
+                </button>
+                <button
+                    onMouseEnter={(event) => {
+                        handleMouseEvent(event, {
+                            params: { backgroundColor: '#2F2F2F', color: '#F4F4F5', cursor: 'pointer' }
+                        })
+                    }}
+                    onMouseLeave={(event) => {
+                        handleMouseEvent(event, {
+                            params: { backgroundColor: '#EEE', color: '#000', cursor: '' }
+                        })
+                    }}
                 >
                     Rate Location
                 </button>
             </div>
+            {toggleForm && (
+                <div style={{ width: '80%' }}>
+                    <CreateLocation />
+                </div>
+            )}
             <div className="grid">
                 {/* Later */}
                 {props.cards.map((entry, index) => (
