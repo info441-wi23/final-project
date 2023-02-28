@@ -1,0 +1,1 @@
+// get location and all its reviews

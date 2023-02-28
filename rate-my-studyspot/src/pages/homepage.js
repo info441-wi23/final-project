@@ -1,10 +1,15 @@
 import StudySpotCard from "../components/studyspotcard";
+
 import './css/homepage.css'
 
 export default function HomePage(props) {
 
-    const handleAddLocation = () => {
-        alert('handles add location @ /create (POST)')
+    const handleAddLocation = async () => {
+        //alert('handles add location @ /create (POST)')
+        let responseJson = await fetchJSON(`api/$`, {
+        method: "POST",
+        body: {postID: postID, newComment: newComment}
+    })
     }
     return (
         <div className="home-page">

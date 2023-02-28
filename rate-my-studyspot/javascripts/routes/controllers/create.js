@@ -1,0 +1,1 @@
+// create a new studyspot LOCATION (a place that has multiple studyspots?)
