@@ -1,4 +1,4 @@
-// create a new studyspot LOCATION (a place that has multiple studyspots?)
+// create a new studyspot LOCATION 
 
 import express from 'express'
 

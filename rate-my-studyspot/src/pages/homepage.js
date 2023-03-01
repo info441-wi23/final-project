@@ -1,10 +1,10 @@
 import StudySpotCard from "../components/studyspotcard";
 import React, { useState } from 'react';
+
 import './css/homepage.css'
 import CreateLocation from "../components/createlocation";
 
 export default function HomePage(props) {
-
     const [toggleForm, setToggleForm] = useState(false)
 
     const handleFormToggle = () => {
