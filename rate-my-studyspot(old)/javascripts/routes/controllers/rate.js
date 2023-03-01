@@ -1,0 +1,1 @@
+// Rates an already-published study spot and updates its average rating
