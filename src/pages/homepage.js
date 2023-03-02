@@ -46,7 +46,7 @@ export default function HomePage(props) {
             </div>
             {toggleForm && (
                 <div style={{ width: '80%' }}>
-                    <CreateLocation />
+                    <CreateLocation formState={props.formState} setToggleForm={setToggleForm} />
                 </div>
             )}
             <div className="grid">

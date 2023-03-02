@@ -3,17 +3,8 @@ import React, { useState } from "react";
 import './css/createlocation.css'
 
 
-export default function CreateLocation() {
-    const [formData, setFormData] = useState({
-        name: '',
-        address: '',
-        authorReview: '',
-        initialRating: '1',
-        ratingsList: [],         // not included in form
-        avgRating: '',          // not included in form
-        author: '',             // not included in form
-        dateCreated: ''         // not included in form
-    });
+export default function CreateLocation(props) {
+    const [formData, setFormData] = props.formState
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -49,7 +40,7 @@ export default function CreateLocation() {
             dateCreated: ''         // not included in form
         })
 
-        alert(`Data being posted: ${JSON.stringify(newLocation)}`)
+        props.setToggleForm(false)
     };
 
     const handleChange = (event) => {
