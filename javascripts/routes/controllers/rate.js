@@ -1,5 +1,4 @@
 // Rates an already-published study spot and updates its average rating
-
 import express from 'express'
 
 const router = express.Router()
@@ -31,5 +30,3 @@ router.post('/', async (req, res) => {
         })
     }
 })
-
-export default router;
