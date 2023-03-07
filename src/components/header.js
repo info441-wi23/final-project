@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import session from 'express-session';
 export default function Header() {
 
-    const handleLogIn = () => {
+    const handleLogin = () => {
         //alert("handles login @ /signin")
         useNavigate("http://localhost:8080/signin");
     }
@@ -27,7 +27,7 @@ export default function Header() {
                                 params: {backgroundColor: '#EEE', color: '#000', cursor: ''}
                             })
                         }}
-                        onClick={handleLogIn}
+                        onClick={handleLogin}
                     >
                         Sign in lol
                     </button>

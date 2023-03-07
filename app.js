@@ -77,12 +77,6 @@ var app = express();
 app.use(express.json())
 app.use(cors())
 
-app.use((req, res, next) => {
-    req.models = models;
-    next();
-});
-
-
 //console.log(models);
 
 app.use(express.static(path.join(__dirname, "build")));

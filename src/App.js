@@ -9,7 +9,7 @@ function App() {
 		name: '',
 		address: '',
 		authorReview: '',
-		initialRating: '1',
+		initialRating: '5',
 		ratingsList: [],         // not included in form
 		avgRating: '',          // not included in form
 		author: '',             // not included in form

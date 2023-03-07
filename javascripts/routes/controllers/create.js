@@ -7,7 +7,7 @@ const router = express.Router()
 router.post('/', async (req, res) => {
     // WORKING
     try {
-        if (true) {     // replace with req.session.isAuthenticated later on
+        if (req.session.isAuthenticated) {     // replace with req.session.isAuthenticated later on
             const newLocation = new req.models.StudySpot({
                 name: req.body.name,
                 address: req.body.address,

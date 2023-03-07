@@ -11,7 +11,6 @@ router.post('/', async (req, res) => {
             const newReview = new req.models.StudySpot({
                 name: req.body.name, 
                 author: req.body.author,
-                // maybe need to double check this one
                 studyspot: {type: mongoose.Schema.Types.ObjectId, ref: "StudySpot"}, 
                 reviewText: req.body.reviewText, 
                 rating: req.body.rating, 

@@ -29,7 +29,7 @@ router.post("/userInfo", async (req, res) => {
 });
 
 router.get("/userInfo", async (req, res) => {
- 
+
 });
 
 export default router;
