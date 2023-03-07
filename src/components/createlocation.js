@@ -25,6 +25,8 @@ export default function CreateLocation(props) {
             headers: {
                 'Content-Type': 'application/json'
             }
+        }).catch(err => {
+            console.log(err);
         })
 
         console.log(data)

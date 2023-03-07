@@ -1,32 +1,36 @@
 import './css/header.css'
 import React, { Component }  from 'react';
+import { useNavigate } from "react-router-dom";
+import session from 'express-session';
 export default function Header() {
 
     const handleLogIn = () => {
-        alert("handles login @ /login")
+        //alert("handles login @ /signin")
+        useNavigate("http://localhost:8080/signin");
     }
-    
+
+  
     return (
         <div className='header'>
             <div className='title'>
                 <p>Rate My Study Spot</p>
             </div>
             <div className='call-to-action'>
-                <button
-                    onMouseEnter={(event) => {
-                        handleMouseEvent(event, {
-                            params: {backgroundColor: '#2F2F2F', color: '#F4F4F5', cursor: 'pointer'}
-                        })
-                    }}
-                    onMouseLeave={(event) => {
-                        handleMouseEvent(event, {
-                            params: {backgroundColor: '#EEE', color: '#000', cursor: ''}
-                        })
-                    }}
-                    onClick={handleLogIn}
-                >
-                    Sign in
-                </button>
+                    <button
+                        onMouseEnter={(event) => {
+                            handleMouseEvent(event, {
+                                params: {backgroundColor: '#2F2F2F', color: '#F4F4F5', cursor: 'pointer'}
+                            })
+                        }}
+                        onMouseLeave={(event) => {
+                            handleMouseEvent(event, {
+                                params: {backgroundColor: '#EEE', color: '#000', cursor: ''}
+                            })
+                        }}
+                        onClick={handleLogIn}
+                    >
+                        Sign in lol
+                    </button>
             </div>
         </div>
     )

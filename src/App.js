@@ -24,7 +24,9 @@ function App() {
 			.then((r) => {
 				// save data from fetch request to state
 				setData(r);
-			});
+			}).catch(err => {
+				console.log(err);
+			})
 	}, [url, formData]);
 
 	return (
