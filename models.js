@@ -8,11 +8,8 @@ let models = {};
 const studySpotSchema = new mongoose.Schema({ 
     name: String, 
     address: String, 
-    authorReview: String, 
-    initialRating: Number, 
-    ratingList: Array, // we might not need this because reviewSchema references studySpotSchema and also has an attribute for rating
-    avgRating: Number, 
-    author: String, 
+    // ratingList: Array, // we might not need this because reviewSchema references studySpotSchema and also has an attribute for rating
+    // avgRating: Number, 
     dateCreated: Date 
 });
 models.StudySpot = mongoose.model("StudySpot", studySpotSchema);
@@ -31,6 +28,6 @@ const reviewSchema = new mongoose.Schema({
     rating: Number, 
     dateCreated: Date
 })
-models.review = mongoose.model("Review", reviewSchema);
+models.Review = mongoose.model("Review", reviewSchema);
 
 export default models;
