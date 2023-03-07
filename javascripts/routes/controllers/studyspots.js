@@ -4,7 +4,7 @@ import express from 'express'
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    console.log("study spot router get is now being used");
+    //console.log("study spot router get is now being used");
    try {
     let allStudySpots = await req.models.StudySpot.find();
     res.send(allStudySpots);

@@ -9,7 +9,7 @@ function App() {
 		name: '',
 		address: '',
 		authorReview: '',
-		initialRating: '1',
+		initialRating: '5',
 		ratingsList: [],         // not included in form
 		avgRating: '',          // not included in form
 		author: '',             // not included in form
@@ -24,7 +24,9 @@ function App() {
 			.then((r) => {
 				// save data from fetch request to state
 				setData(r);
-			});
+			}).catch(err => {
+				console.log(err);
+			})
 	}, [url, formData]);
 
 	return (

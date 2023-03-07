@@ -6,10 +6,8 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
     try {
-        if (true) { 
-            console.log(req.body)
+        if (req.session.isAuthenticated) {
             let allPosts = await req.models.StudySpot.find({'name' : req.body.name})
-            console.log(allPosts)
             if(allPosts.length == 0) {
                 const newLocation = new req.models.StudySpot({
                     name: req.body.name,
@@ -18,7 +16,6 @@ router.post('/', async (req, res) => {
                     dateCreated: req.body.dateCreated
                 })
                 await newLocation.save()
-                console.log("save")
                 const newReview = new req.models.Review({
                     name: req.body.name,
                     author: req.body.author,
@@ -27,7 +24,6 @@ router.post('/', async (req, res) => {
                     reviewText: req.body.authorReview,
                     dateCreated: req.body.dateCreated
                 })
-                console.log(newReview)
                 await newReview.save()
             } else {
                 res.status(402).send('Location already in database')
