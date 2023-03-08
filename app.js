@@ -50,21 +50,21 @@ app.use(sessions({
 
 const msid = new msIdExpress.WebAppAuthClientBuilder(appSettings).build()
 app.use(msid.initialize())
-/*
+
+
 app.get('/', (req, res) => {
     console.log("hello");
     console.log(process.cwd());
     res.redirect("http://localhost:3000")
-})
-*/
+}) 
 
-
+/*
 app.get("/", (req, res) => {
     console.log("app.get(/) called")
     res.sendFile(path.join(__dirname, "build", "index.html"));
     //res.send("hello");
 });
-
+*/
 
 app.get('/signin',
     msid.signIn({ postLoginRedirect: '/' })
@@ -85,14 +85,6 @@ app.use((req, res, next) => {
     req.models = models;
     next();
 });
-
-//console.log(models);
-
-/*
-app.get('/', (req, res) => {
-    res.send('api home')
-})
-*/
 
 app.use("/studyspots", studySpotsRouter)
 app.use('/reviews', reviewsRouter)
