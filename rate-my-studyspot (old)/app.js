@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 import locationRouter from './javascripts/routes/controllers/location.js'
-import createRouter from './javascripts/routes/controllers/create.js'
+import createRouter from '../javascripts/routes/controllers/create.js'
 import studySpotsRouter from "./javascripts/routes/controllers/studyspots.js"
 import { create } from "domain";
 
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
-}); 
+});
 
 
 app.use('/location', locationRouter)

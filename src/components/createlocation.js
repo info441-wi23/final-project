@@ -10,7 +10,7 @@ export default function CreateLocation(props) {
         const newLocation = {
             ...formData,
             ratingsList: [formData.initialRating],
-            avgRating: formData.initialRating ? formData.initialRating : 1,
+            avgRating: formData.initialRating ? formData.initialRating : 5,
             author: 'test person',
             dateCreated: new Date()
 
@@ -27,8 +27,6 @@ export default function CreateLocation(props) {
             console.log(err);
         })
 
-        console.log(data)
-
         setFormData({
             name: '',
             address: '',
@@ -41,6 +39,12 @@ export default function CreateLocation(props) {
         })
 
         props.setToggleForm(false)
+
+        if (data.ok) {
+            alert('Form submitted successfully!');
+        } else {
+            alert('You must be logged in to post')
+        }
     };
 
     const handleChange = (event) => {
