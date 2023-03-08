@@ -1,18 +1,16 @@
 
 import React, { useState } from "react";
-import './css/createlocation.css'
+import './css/form.css'
 
 
 export default function CreateLocation(props) {
     const [formData, setFormData] = props.formState
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-
         const newLocation = {
             ...formData,
             ratingsList: [formData.initialRating],
-            avgRating: formData.initialRating,
+            avgRating: formData.initialRating ? formData.initialRating : 5,
             author: 'test person',
             dateCreated: new Date()
 
@@ -29,8 +27,6 @@ export default function CreateLocation(props) {
             console.log(err);
         })
 
-        console.log(data)
-
         setFormData({
             name: '',
             address: '',
@@ -43,6 +39,12 @@ export default function CreateLocation(props) {
         })
 
         props.setToggleForm(false)
+
+        if (data.ok) {
+            alert('Form submitted successfully!');
+        } else {
+            alert('You must be logged in to post')
+        }
     };
 
     const handleChange = (event) => {

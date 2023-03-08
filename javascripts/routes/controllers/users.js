@@ -15,17 +15,17 @@ router.get("/myIdentity", async (req, res) => {
         res.json({
             status: "loggedin",
             userInfo: {
-            name: req.session.account.name,
-            username: req.session.account.username
+                name: req.session.account.name,
+                username: req.session.account.username
             }
         });
     } else {
-        res.json({status: "loggedout"});
+        res.json({ status: "loggedout" });
     }
 });
 
 router.post("/userInfo", async (req, res) => {
-    
+
 });
 
 router.get("/userInfo", async (req, res) => {

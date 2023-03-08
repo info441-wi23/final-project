@@ -1,56 +1,16 @@
+import React from "react";
+import { useState } from "react";
+import './css/form.css'
 
-import React, { useState } from "react";
-import './css/createlocation.css'
-
-
-export default function CreateLocation() {
+export default function ReviewLocation({ id, setToggleForm }) {
     const [formData, setFormData] = useState({
         name: '',
-        address: '',
-        authorReview: '',
-        initialRating: '1',
-        ratingsList: [],         // not included in form
-        avgRating: '',          // not included in form
-        author: '',             // not included in form
-        dateCreated: ''         // not included in form
+        author: '',
+        spotID: '',
+        reviewText: '',
+        rating: '',
+        dateCreate: ''
     });
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        const newLocation = {
-            ...formData,
-            ratingsList: [formData.initialRating],
-            avgRating: formData.initialRating,
-            author: 'test person',
-            dateCreated: new Date()
-
-        };
-
-        // todo: post newLocation to API endpoint here
-        const data = await fetch('http://localhost:8080/create', {
-            method: 'POST',
-            body: JSON.stringify(newLocation),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        console.log(data)
-
-        setFormData({
-            name: '',
-            address: '',
-            authorReview: '',
-            initialRating: '',
-            ratingsList: [],         // not included in form
-            avgRating: '',          // not included in form
-            author: '',             // not included in form
-            dateCreated: ''         // not included in form
-        })
-
-        alert(`Data being posted: ${JSON.stringify(newLocation)}`)
-    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -61,11 +21,42 @@ export default function CreateLocation() {
         }));
     };
 
+    const handleSubmit = async (event) => {
+
+        const newLocation = {
+            ...formData,
+            rating: formData.rating ? formData.rating : 1,
+            spotID: id,
+            dateCreated: new Date()
+
+        };
+
+        // todo: post newLocation to API endpoint here
+        const data = await fetch('http://localhost:8080/reviews', {
+            method: 'POST',
+            body: JSON.stringify(newLocation),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+
+        console.log(data)
+
+        setFormData({
+            name: '',
+            author: '',
+            spotID: '',
+            reviewText: '',
+            rating: '',
+            dateCreate: ''
+        })
+
+        setToggleForm(false)
+    };
     return (
-        <form
-            onSubmit={handleSubmit}
-            className='form'
-        >
+        <form className="form" onSubmit={handleSubmit}>
             <div>
                 <label>
                     Name:
@@ -79,12 +70,12 @@ export default function CreateLocation() {
             </div>
             <div>
                 <label>
-                    Address:
+                    Author
                 </label>
                 <input
                     type="text"
-                    name="address"
-                    value={formData.address}
+                    name="author"
+                    value={formData.author}
                     onChange={handleChange}
                 />
             </div>
@@ -94,8 +85,8 @@ export default function CreateLocation() {
                 </label>
                 <textarea
                     type="text"
-                    name="authorReview"
-                    value={formData.authorReview}
+                    name="reviewText"
+                    value={formData.reviewText}
                     onChange={handleChange}
                 />
             </div>
@@ -105,8 +96,8 @@ export default function CreateLocation() {
                 </label>
                 <select
                     type="text"
-                    name="initialRating"
-                    value={formData.initialRating}
+                    name="rating"
+                    value={formData.rating}
                     onChange={handleChange}
                 >
                     <option value={1}>1</option>

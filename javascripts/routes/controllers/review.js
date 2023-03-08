@@ -7,26 +7,21 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     // not done yet
     try {
-        // use sessions later
-        if (true) {
-            allReviews = await req.models.Review.find({'_id' : req.query.spotID})
+            console.log('req.query.spotID: ', req.query.spotID)
+            const allReviews = await req.models.Review.find({ 'studyspot': req.query.spotID })
+            console.log('all reviews: ', allReviews)
             let reviews = [];
             for (let i = 0; i < allReviews.length; i++) {
-              reviews.push({
-                          "name" : allReviews[i].name,
-                          "author" : allReviews[i].author,
-                          "rating" : allReviews[i].rating,
-                          "reviewText": allReviews[i].reviewText,
-                          "dateCreated" : allReviews[i].dateCreated})
+                reviews.push({
+                    "name": allReviews[i].name,
+                    "author": allReviews[i].author,
+                    "spotid": allReviews[i].studyspot,
+                    "rating": allReviews[i].rating,
+                    "reviewText": allReviews[i].reviewText,
+                    "dateCreated": allReviews[i].dateCreated
+                })
             }
             res.send(reviews)
-
-        } else {
-            res.status(401).send({
-                status: 'error',
-                error: 'not logged in'
-            })
-        }
     } catch (error) {
         res.status(500).send({
             status: 'error',
@@ -39,13 +34,13 @@ router.post('/', async (req, res) => {
     // not done yet
     try {
         // use sessions later
-        if (true) {
+        if (req.session.isAuthenticated) {
             const newReview = new req.models.Review({
-                name: req.body.name, 
-                author: req.body.author,
-                studyspot: req.body.spotID, 
-                reviewText: req.body.reviewText, 
-                rating: req.body.rating, 
+                name: req.body.name,
+                author: req.session.account.username,
+                studyspot: req.body.spotID,
+                reviewText: req.body.reviewText,
+                rating: req.body.rating,
                 dateCreated: req.body.dateCreated
             });
 
