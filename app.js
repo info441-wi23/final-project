@@ -24,7 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 // idk why but commenting this out lets me do stuff with router.get("/") and res.send
 
 
@@ -48,19 +48,26 @@ app.use(sessions({
     resave: false
 }))
 
-
-
 const msid = new msIdExpress.WebAppAuthClientBuilder(appSettings).build()
 app.use(msid.initialize())
-
+/*
 app.get('/', (req, res) => {
-    console.log("hello");
+    //console.log("hello");
     //console.log(__dirname);
-    console.log(process.cwd());
+    //console.log(process.cwd());
     //res.sendFile(process.cwd() + "/src/App.js");
     //res.sendFile("index.html")
-    res.send("hello");
+    res.sendFile(process.cwd() + "/public/index.html");
 })
+*/
+
+
+app.get("/", (req, res) => {
+    console.log("app.get(/) called")
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+    //res.send("hello");
+});
+
 
 app.get('/signin',
     msid.signIn({ postLoginRedirect: '/' })
@@ -83,10 +90,6 @@ app.use((req, res, next) => {
 });
 
 //console.log(models);
-/*
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-}); */
 
 /*
 app.get('/', (req, res) => {
