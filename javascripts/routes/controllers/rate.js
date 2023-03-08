@@ -6,8 +6,9 @@ const router = express.Router()
 router.post('/', async (req, res) => {
     // NOT WORKING
     try {
-        if (req.session.isAuthenticated) {     // replace with req.session.isAuthenticated later on
+        if (req.session.isAuthenticated) {
             // NEED TO FINISH
+            allReviews = await req.models.Review.find({'_id' : req.query.spotID})
             const spot = await req.models.StudySpot.find({
                 // fix later if needed
                 name: req.body.name

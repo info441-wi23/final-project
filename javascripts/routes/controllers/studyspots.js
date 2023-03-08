@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
                      initialRating: req.body.initialRating,
                      dateCreated: req.body.dateCreated
                  })
-                 await newLocation.save()
+                 await newLocation.save();
                  const newReview = new req.models.Review({
                      name: req.body.name,
                      author: req.body.author,
