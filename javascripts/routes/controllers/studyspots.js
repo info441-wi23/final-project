@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
                 await newLocation.save();
                 const newReview = new req.models.Review({
                     name: req.body.name,
-                    author: req.body.author,
+                    author: req.session.account.username,
                     studyspot: newLocation._id,
                     rating: req.body.initialRating,
                     reviewText: req.body.authorReview,

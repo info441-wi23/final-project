@@ -52,12 +52,9 @@ const msid = new msIdExpress.WebAppAuthClientBuilder(appSettings).build()
 app.use(msid.initialize())
 /*
 app.get('/', (req, res) => {
-    //console.log("hello");
-    //console.log(__dirname);
-    //console.log(process.cwd());
-    //res.sendFile(process.cwd() + "/src/App.js");
-    //res.sendFile("index.html")
-    res.sendFile(process.cwd() + "/public/index.html");
+    console.log("hello");
+    console.log(process.cwd());
+    res.redirect("http://localhost:3000")
 })
 */
 
