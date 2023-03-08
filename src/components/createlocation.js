@@ -19,7 +19,7 @@ export default function CreateLocation(props) {
         };
 
         // todo: post newLocation to API endpoint here
-        const data = await fetch('http://localhost:8080/create', {
+        const data = await fetch('http://localhost:8080/studyspots', {
             method: 'POST',
             body: JSON.stringify(newLocation),
             headers: {
