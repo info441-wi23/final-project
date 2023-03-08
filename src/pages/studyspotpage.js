@@ -26,6 +26,7 @@ export default function StudySpotPage() {
             if (reviewData.length === 0) {
                 setGeneralInfo({ name: reviewData.spotid, rating: -1 })
             } else if (reviewData.length > 0) {
+                console.log(reviewData)
                 setGeneralInfo({ name: reviewData.spotid, rating: totalRating / reviewData.length })
             }
         }
