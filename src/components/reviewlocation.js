@@ -1,23 +1,38 @@
-
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import './css/form.css'
 
+export default function ReviewLocation({ id, setToggleForm }) {
+    const [formData, setFormData] = useState({
+        name: '',
+        author: '',
+        spotID: '',
+        reviewText: '',
+        rating: '',
+        dateCreate: ''
+    });
 
-export default function CreateLocation(props) {
-    const [formData, setFormData] = props.formState
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = async (event) => {
+
         const newLocation = {
             ...formData,
-            ratingsList: [formData.initialRating],
-            avgRating: formData.initialRating ? formData.initialRating : 1,
-            author: 'test person',
+            rating: formData.rating ? formData.rating : 1,
+            spotID: id,
             dateCreated: new Date()
 
         };
 
         // todo: post newLocation to API endpoint here
-        const data = await fetch('http://localhost:8080/studyspots', {
+        const data = await fetch('http://localhost:8080/reviews', {
             method: 'POST',
             body: JSON.stringify(newLocation),
             headers: {
@@ -31,32 +46,17 @@ export default function CreateLocation(props) {
 
         setFormData({
             name: '',
-            address: '',
-            authorReview: '',
-            initialRating: '',
-            ratingsList: [],         // not included in form
-            avgRating: '',          // not included in form
-            author: '',             // not included in form
-            dateCreated: ''         // not included in form
+            author: '',
+            spotID: '',
+            reviewText: '',
+            rating: '',
+            dateCreate: ''
         })
 
-        props.setToggleForm(false)
+        setToggleForm(false)
     };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
-
     return (
-        <form
-            onSubmit={handleSubmit}
-            className='form'
-        >
+        <form className="form" onSubmit={handleSubmit}>
             <div>
                 <label>
                     Name:
@@ -70,12 +70,12 @@ export default function CreateLocation(props) {
             </div>
             <div>
                 <label>
-                    Address:
+                    Author
                 </label>
                 <input
                     type="text"
-                    name="address"
-                    value={formData.address}
+                    name="author"
+                    value={formData.author}
                     onChange={handleChange}
                 />
             </div>
@@ -85,8 +85,8 @@ export default function CreateLocation(props) {
                 </label>
                 <textarea
                     type="text"
-                    name="authorReview"
-                    value={formData.authorReview}
+                    name="reviewText"
+                    value={formData.reviewText}
                     onChange={handleChange}
                 />
             </div>
@@ -96,8 +96,8 @@ export default function CreateLocation(props) {
                 </label>
                 <select
                     type="text"
-                    name="initialRating"
-                    value={formData.initialRating}
+                    name="rating"
+                    value={formData.rating}
                     onChange={handleChange}
                 >
                     <option value={1}>1</option>

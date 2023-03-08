@@ -15,6 +15,17 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/getOne', async (req, res) => {
+    const id = req.query.id
+    try {
+        let studySpot = await req.models.StudySpot.findOne({ '_id': id });
+        res.status(200).send(studySpot);
+    } catch (error) {
+        console.log("Error: " + error);
+        res.status(500).json({ "status": "error", "error": error });
+    }
+})
+
 // create a new studyspot LOCATION 
 router.post('/', async (req, res) => {
     try {

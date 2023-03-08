@@ -12,6 +12,11 @@
     border-radius: 5px;
 }
 
+.grid-item:hover {
+    cursor: pointer;
+    background-color: #e8e3d3;
+}
+
 .home-page {
     width: 100%;
     display: flex;

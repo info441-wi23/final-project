@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
                 reviews.push({
                     "name": allReviews[i].name,
                     "author": allReviews[i].author,
+                    "spotid": allReviews[i].studyspot,
                     "rating": allReviews[i].rating,
                     "reviewText": allReviews[i].reviewText,
                     "dateCreated": allReviews[i].dateCreated
