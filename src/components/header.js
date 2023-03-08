@@ -7,7 +7,7 @@ export default function Header() {
                 <p>Rate My Study Spot</p>
             </div>
             <div className='call-to-action'>
-                <a href="http://localhost:8080/signin">
+                <a href="http://localhost:3000/signin">
                     <button
 
                         onMouseEnter={(event) => {
@@ -20,10 +20,8 @@ export default function Header() {
                                 params: { backgroundColor: '#EEE', color: '#000', cursor: '' }
                             })
                         }}
-
-
                     >
-                        Sign in lol
+                        Sign in
                     </button>
                 </a>
             </div>
