@@ -9,15 +9,18 @@ router.get('/', async (req, res) => {
     try {
         // use sessions later
         if (true) {
-            allReviews = await req.models.Review.find({'_id' : req.query.spotID})
+            console.log('req.query.spotID: ', req.query.spotID)
+            const allReviews = await req.models.Review.find({ 'studyspot': req.query.spotID })
+            console.log('all reviews: ', allReviews)
             let reviews = [];
             for (let i = 0; i < allReviews.length; i++) {
-              reviews.push({
-                          "name" : allReviews[i].name,
-                          "author" : allReviews[i].author,
-                          "rating" : allReviews[i].rating,
-                          "reviewText": allReviews[i].reviewText,
-                          "dateCreated" : allReviews[i].dateCreated})
+                reviews.push({
+                    "name": allReviews[i].name,
+                    "author": allReviews[i].author,
+                    "rating": allReviews[i].rating,
+                    "reviewText": allReviews[i].reviewText,
+                    "dateCreated": allReviews[i].dateCreated
+                })
             }
             res.send(reviews)
 
@@ -41,11 +44,11 @@ router.post('/', async (req, res) => {
         // use sessions later
         if (true) {
             const newReview = new req.models.Review({
-                name: req.body.name, 
+                name: req.body.name,
                 author: req.body.author,
-                studyspot: req.body.spotID, 
-                reviewText: req.body.reviewText, 
-                rating: req.body.rating, 
+                studyspot: req.body.spotID,
+                reviewText: req.body.reviewText,
+                rating: req.body.rating,
                 dateCreated: req.body.dateCreated
             });
 

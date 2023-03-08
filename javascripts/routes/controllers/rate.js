@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
     try {
         if (req.session.isAuthenticated) {
             // NEED TO FINISH
-            allReviews = await req.models.Review.find({'_id' : req.query.spotID})
+            allReviews = await req.models.Review.find({ '_id': req.query.spotID })
             const spot = await req.models.StudySpot.find({
                 // fix later if needed
                 name: req.body.name

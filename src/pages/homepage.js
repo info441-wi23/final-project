@@ -1,11 +1,13 @@
 import StudySpotCard from "../components/studyspotcard";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import './css/homepage.css'
 import CreateLocation from "../components/createlocation";
 
 export default function HomePage(props) {
     const [toggleForm, setToggleForm] = useState(false)
+    const navigate = useNavigate()
 
     const handleFormToggle = () => {
         setToggleForm(!toggleForm)
@@ -52,12 +54,16 @@ export default function HomePage(props) {
             <div className="grid">
                 {/* Later */}
                 {props.cards.map((entry, index) => (
-                    <div key={index} className='grid-item'>
+                    <div
+                        key={index}
+                        className='grid-item'
+                        onClick={() => navigate(`/location/${entry._id}`)}
+                    >
                         <StudySpotCard card={entry} />
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     )
 }
 
