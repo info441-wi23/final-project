@@ -6,8 +6,8 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import msIdExpress from "microsoft-identity-express";
 import sessions from "express-session";
-import studySpotsRouter from "../javascripts/routes/controllers/studyspots.js"
-import reviewsRouter from '../javascripts/routes/controllers/review.js'
+import studySpotsRouter from "./routes/api/v1/controllers/studyspots.js"
+import reviewsRouter from './routes/api/v1/controllers/reviews.js'
 import userRouter from "../javascripts/routes/controllers/users.js"
 
 import { fileURLToPath } from 'url';

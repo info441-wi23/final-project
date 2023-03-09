@@ -24,8 +24,6 @@ async function loadPosts() {
   document.getElementById("posts_box").innerText = "Loading...";
   let spotsJson = await fetchJSON(`/studyspots`)
 
-  console.log(spotsJson)
-
   let postsHtml = spotsJson.map(spotsInfo => {
     return `
         <div class="card" style="width: 18rem;" onclick="onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')">
@@ -37,11 +35,15 @@ async function loadPosts() {
           <h5 class="card-title">${spotsInfo.name}</h5>
           <p>Rating: ${spotsInfo.initialRating}/5</p>
         </div>
-    </div>`
+      </div>
+    `
   }).join("\n");
   document.getElementById("posts_box").innerHTML = postsHtml;
 }
 
+//<a href="/studySpot.html">
+
 function onClick(spotsInfo) {
-  window.location = `/location/${JSON.parse(decodeURIComponent(spotsInfo))._id}`
+  window.location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
+  onclick = "onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')"
 }

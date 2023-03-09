@@ -15,9 +15,9 @@
     border-radius: 10px;
 }
 
-.column > .image {
+.column > .image > img {
     height: 225px;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 .title-text {
@@ -27,7 +27,7 @@
     width: 80%;
 }
 
-.root {
+.heading {
     display: flex;
     flex-direction: column;
     width: 100%;
