@@ -2,6 +2,12 @@ import './css/header.css'
 import React, { Component }  from 'react';
 import { useNavigate} from "react-router-dom";
 export default function Header() {
+
+    let loggedin = fetch("http://localhost:8080/user/myIdentity")
+    .then((response) => response.json())
+	.then((response) => {
+        console.log(response);
+    })
   
     return (
         
@@ -22,7 +28,7 @@ export default function Header() {
                             })
                         }}
                     >
-                        Sign in lol
+                        Sign in
                     </button>
             </div>
         </div>

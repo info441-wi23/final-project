@@ -12,6 +12,7 @@ import { dirname } from 'path';
 
 import studySpotsRouter from "./javascripts/routes/controllers/studyspots.js"
 import reviewsRouter from './javascripts/routes/controllers/review.js'
+import userRouter from "./javascripts/routes/controllers/users.js"
 import { create } from "domain";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -82,6 +83,7 @@ app.use((req, res, next) => {
 
 app.use("/studyspots", studySpotsRouter)
 app.use('/reviews', reviewsRouter)
+app.use("/user", userRouter)
 
 app.listen(process.env.PORT || 8080);
 
