@@ -1,4 +1,4 @@
-
+import models from "./models.js";
 import express from "express";
 import cors from 'cors'
 import path from "path";
@@ -21,15 +21,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static('public'));
 
-
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     req.models = models;
     next();
-}); */
+});
 
 app.get("/", (req, res) => {
+    console.log("get called");
+    console.log(models);
     res.sendFile(__dirname + "/index.html");
 })
 

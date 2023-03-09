@@ -14,9 +14,6 @@
     font-size: 28px;
 }
 
-.title:hover {
-    cursor: pointer
-}
 
 .call-to-action {
     padding: 10px;
@@ -29,7 +26,10 @@
     border-radius: 5px;
 }
 
-
+button:hover {
+    background-color: #2F2F2F;
+    color: white;
+}
 
 
 .grid {
