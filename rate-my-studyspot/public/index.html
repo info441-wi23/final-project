@@ -5,23 +5,23 @@
     <meta charset="utf-8">
     <meta name="author" content="Travon Dao, Patrick Liu, David Ngo, Chris Ong">
     <meta name="description" content="A web forum for sharing and reviewing/rating studyspots">
-    <link rel="stylesheet" type="text/css" href="stylesheets/homepage.css">
-    <link rel="script" href="javascripts/index.js">
+    <link rel="stylesheet" href="stylesheets/homepage.css">
+    <script src="javascripts/index.js"></script>
 </head>
 <body>
     <div class='header'>
         <div class='title'>
             <p>Rate My Study Spot</p>
         </div>
-        <div class='call-to-action'>
+        <div id='call-to-action' >
                 <button>Sign in</button>
         </div>
     </div>
 
     <div class="home-page">
-        <div class="add-card">
-            <button>Add Location</button>
-            <button>Rate Location</button>
+        <div id="add-card" class="add-card">
+            <button onClick="handleAddLocation()">Add Location</button>
+            <button>Review Location</button>
         </div>
         
         <div class="card-grid">

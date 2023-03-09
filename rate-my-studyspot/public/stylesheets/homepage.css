@@ -15,11 +15,11 @@
 }
 
 
-.call-to-action {
+#call-to-action {
     padding: 10px;
 }
 
-.call-to-action > button {
+#call-to-action > button {
     font-size: 18px;
     border: none;
     padding: 10px 15px;
