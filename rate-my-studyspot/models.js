@@ -18,7 +18,7 @@ models.StudySpot = mongoose.model("StudySpot", studySpotSchema);
 
 const userSchema = new mongoose.Schema({
     username: String,
-    bookmarks: Array
+    bookmarks: [String]
 })
 models.User = mongoose.model("User", userSchema);
 
