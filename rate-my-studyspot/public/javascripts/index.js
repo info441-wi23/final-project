@@ -28,11 +28,14 @@ async function loadPosts(bookmarks) {
     if (!bookmarks.includes('none')) {
       if (bookmarks.includes(spotsInfo._id)) {
         icon = `
-          <i class="fa-solid fa-bookmark" 
+          <i class="icon fa-solid fa-bookmark" 
           onclick="manageBookmark('${encodeURIComponent(JSON.stringify(spotsInfo._id))}')">
           </i>`
       } else {
-        icon = `<i class="icon fa-regular fa-bookmark" onclick="manageBookmark('${encodeURIComponent(JSON.stringify(spotsInfo._id))}')"></i>`
+        icon = `
+          <i class="icon fa-regular fa-bookmark" 
+          onclick="manageBookmark('${encodeURIComponent(JSON.stringify(spotsInfo._id))}')">
+          </i>`
       }
     } else {
       icon = ''
@@ -91,40 +94,35 @@ async function postUrl() {
   alert('success!')
 
   hideForm()
-  loadPosts();
+  const bookmarks = await getBookmark()
+  loadPosts(bookmarks);
 }
 
 async function manageBookmark(id) {
-  const location = JSON.parse(decodeURIComponent(id))
-  const bookmarkLength = (await getBookmark()).length
+  const locationId = JSON.parse(decodeURIComponent(id))
 
   try {
+    const bookmarkLength = (await getBookmark()).length
     if (bookmarkLength > 0) {
       await fetchJSON('/bookmark', {
         method: 'PATCH',
         body: {
-          bookmark: location
+          bookmark: locationId
         }
       })
     } else {
-      // if ((getBookmark()).includes(id)) {
-      //   await fetchJSON('/bookmark', {
-      //     method: 'DELETE',
-      //     bookmark: location
-      //   })
-      // } else {
       await fetchJSON('/bookmark', {
         method: 'POST',
         body: {
-          bookmark: location
+          bookmark: locationId
         }
       })
-      // }
     }
-
-    init()
+    setTimeout(() => {
+      location.reload()
+    }, 1000)
   } catch (error) {
-    alert('Error occured. Make sure you are signed in')
+    console.log(error)
   }
 }
 

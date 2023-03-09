@@ -56,7 +56,7 @@ async function displayError() {
 function average(initialRating, currentReviews) {
     const ratingSum = currentReviews.reduce((sum, review) => sum + review.rating, 0)
     const totalRatings = currentReviews.length
-    const averageRating = (ratingSum + initialRating) / (totalRatings + 1)
+    const averageRating = ratingSum / totalRatings
 
     if (Number.isInteger(averageRating)) {
         return Math.round(averageRating);

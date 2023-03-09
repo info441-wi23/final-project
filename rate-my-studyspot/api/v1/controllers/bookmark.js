@@ -6,7 +6,11 @@ router.get('/', async (req, res) => {
     try {
         if (req.session.isAuthenticated) {
             const data = await req.models.User.findOne({ 'username': req.session.account.username })
-            res.status(200).send(data.bookmarks)
+            if (data) {
+                res.status(200).send(data.bookmarks)
+            } else {
+                res.status(200).send([])
+            }
         } else {
             res.status(200).send(['none'])
         }
@@ -49,7 +53,11 @@ router.patch('/', async (req, res) => {
     let currentUser = await req.models.User.findOne({ 'username': req.session.account.username });
     const currentBookmarks = currentUser.bookmarks;
 
-    currentUser.bookmarks = [...currentBookmarks, req.body.bookmark];
+    if (currentBookmarks.includes(req.body.bookmark)) {
+        currentUser.bookmarks = currentBookmarks.filter((bookmark) => bookmark !== req.body.bookmark);
+    } else {
+        currentUser.bookmarks = [...currentBookmarks, req.body.bookmark];
+    }
     await currentUser.save()
 })
 
