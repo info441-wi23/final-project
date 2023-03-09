@@ -2,8 +2,6 @@ import './css/header.css'
 import React, { Component }  from 'react';
 import { useNavigate} from "react-router-dom";
 export default function Header() {
-    const navigate = useNavigate()
-
   
     return (
         
@@ -13,7 +11,6 @@ export default function Header() {
             </div>
             <div className='call-to-action'>
                     <button  
-                    onClick={() => { navigate('Google.com') }}
                         onMouseEnter={(event) => {
                             handleMouseEvent(event, {
                                 params: {backgroundColor: '#2F2F2F', color: '#F4F4F5', cursor: 'pointer'}
