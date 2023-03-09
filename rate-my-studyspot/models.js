@@ -10,6 +10,8 @@ const studySpotSchema = new mongoose.Schema({
     address: String,
     reviewText: String,
     rating: Number,
+    initialRating: Number,
+    author: String,
     dateCreated: Date
 });
 models.StudySpot = mongoose.model("StudySpot", studySpotSchema);

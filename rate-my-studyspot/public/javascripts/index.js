@@ -20,8 +20,6 @@ async function loadPosts() {
   let postsHtml = (await Promise.all(spotsJson.map(async spotsInfo => {
     const ratings = await fetchJSON(`/reviews?spotID=${spotsInfo._id}`)
 
-    console.log(ratings)
-
     return `
         <div class="card" style="width: 18rem;" onclick="onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')">
           <img 
@@ -54,7 +52,8 @@ async function postUrl() {
         review: review,
         authorReview: review,
         rating: rating,
-        initialRating: rating
+        initialRating: rating,
+        dateCreated: new Date()
       }
     })
   } catch (error) {

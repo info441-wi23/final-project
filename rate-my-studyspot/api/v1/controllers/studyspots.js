@@ -15,14 +15,18 @@ router.get('/', async (req, res) => {
 
 // create a new studyspot LOCATION 
 router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         if (req.session.isAuthenticated) {
             let allPosts = await req.models.StudySpot.find({ 'name': req.body.name })
             if (allPosts.length == 0) {
                 const newLocation = new req.models.StudySpot({
                     name: req.body.name,
+                    author: req.session.account.username ? req.session.account.username : 'Person',
                     address: req.body.address,
-                    initialRating: req.body.rating,
+                    rating: req.body.rating,
+                    initialRating: req.body.initialRating,
+                    reviewText: req.body.review,
                     dateCreated: req.body.dateCreated
                 })
                 await newLocation.save();

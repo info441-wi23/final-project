@@ -3,8 +3,6 @@ async function init() {
     const spotID = queryParams.get("spotID");
     const currentReviews = await fetchJSON(`/reviews?spotID=${spotID}`);
 
-    console.log(currentReviews)
-
     await loadHeading(spotID, currentReviews)
     await loadContent(currentReviews)
     await loadIdentity()
@@ -23,6 +21,8 @@ function hideForm() {
 async function loadHeading(spotID, currentReviews) {
     const locationDetails = await fetchJSON(`/reviews/getOne?id=${spotID}`)
 
+    console.log(locationDetails)
+
     let heading = document.getElementById('heading')
     heading.innerHTML = `
         <div class="title-text">
@@ -36,7 +36,7 @@ async function loadHeading(spotID, currentReviews) {
                     <p>Initial Rating: ${locationDetails.initialRating}</p>
                 </div>
                 <div style="display: flex; flex-direction: column; flex: 1;">
-                    <p>${locationDetails.author}'s review: ${locationDetails.review}</p>
+                    <p>${locationDetails.author}'s review: ${locationDetails.reviewText}</p>
                 </div>
             </div>
         </div>
@@ -47,6 +47,7 @@ async function loadContent(currentReviews) {
     let content = document.getElementById('content')
 
     let reviewsHTML = currentReviews.map((entry, index) => {
+        console.log(entry)
         return `
         <div class="review-container" key=${index}>
             <div class="row" style="textAlign: left;">
@@ -98,11 +99,18 @@ async function submitForm() {
         })
     } catch (error) {
         alert('An error has occured, make sure you are logged in')
+        document.getElementById("name").value = ''
+        document.getElementById("review").value = ''
+        document.getElementById("rating").value = ''
     }
 
     document.getElementById("name").value = ''
     document.getElementById("review").value = ''
     document.getElementById("rating").value = ''
+
+    hideForm()
+
+    init()
 }
 
 function onClick() {
