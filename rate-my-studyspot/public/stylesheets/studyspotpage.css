@@ -1,0 +1,85 @@
+.review-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    border: 3px solid #4b2e83;   
+    border-radius: 10px;
+}
+
+.column > .image {
+    height: 225px;
+    object-fit: fill;
+}
+
+.title-text {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: left;
+    width: 80%;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.add-button {
+    border: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.add-button:hover {
+    background-color: #2F2F2F; 
+    color: #F4F4F5;
+    cursor: pointer ;
+    transition: 0.3s;
+}
+
+.button-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 15px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-end;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px
+}
+
+.form div input {
+    width: 275px;
+}
+
+.form div textarea {
+    width: 275px;
+}
+
+.form div select {
+    width: 275px;
+}
