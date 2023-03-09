@@ -19,10 +19,18 @@ async function loadHeading(spotID, currentReviews) {
     heading.innerHTML = `
         <div class="title-text">
             <button class="add-button" onclick="onClick()">Back</button>
-            <p>Study Spot Page</p>
+            <p style="padding: 20px 0px">Study Spot Page</p>
             <hr></hr>
-            <p>Location Name: ${locationDetails.name}</p>
-            <p>Average Rating: ${average(locationDetails.initialRating, currentReviews)} </p>
+            <div style="display: flex; flex-direction: row; width: 100%;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <p>Location Name: ${locationDetails.name}</p>
+                    <p>Average Rating: ${average(locationDetails.initialRating, currentReviews)} </p>
+                    <p>Initial Rating: ${locationDetails.initialRating}</p>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <p>${locationDetails.author}'s review: ${locationDetails.review}</p>
+                </div>
+            </div>
         </div>
     `
 }
@@ -53,16 +61,6 @@ async function loadContent(currentReviews) {
     content.innerHTML = reviewsHTML
 }
 
-function average(initialRating, currentReviews) {
-    const ratingSum = currentReviews.reduce((sum, review) => sum + review.rating, 0)
-    const totalRatings = currentReviews.length
-    const averageRating = (ratingSum + initialRating) / (totalRatings + 1)
-
-    return averageRating.toFixed(2);
-}
-
 function onClick() {
     window.location = '/'
 }
-
-

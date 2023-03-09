@@ -27,7 +27,9 @@ async function loadPosts() {
 
   console.log(spotsJson)
 
-  let postsHtml = spotsJson.map(spotsInfo => {
+  let postsHtml = (await Promise.all(spotsJson.map(async spotsInfo => {
+    const ratings = await fetchJSON(`/reviews?spotID=${spotsInfo._id}`)
+
     return `
         <div class="card" style="width: 18rem;" onclick="onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')">
           <img 
@@ -36,10 +38,11 @@ async function loadPosts() {
           >
         <div class="card-body">
         <h5 class="card-title">${spotsInfo.name}</h5>
-        <p>Rating: ${spotsInfo.rating} / 5</p>
+        <p>Rating: ${average(spotsInfo.initialRating, ratings)} / 5</p>
         </div>
     </div>`
-  }).join("\n");
+  }))).join("\n");
+
   document.getElementById("posts_box").innerHTML = postsHtml;
 }
 
@@ -68,5 +71,6 @@ async function postUrl() {
 }
 
 function onClick(spotsInfo) {
-  window.location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
+  const location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
+  window.location = location
 }
