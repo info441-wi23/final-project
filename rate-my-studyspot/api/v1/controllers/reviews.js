@@ -6,9 +6,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        console.log('req.query.spotID: ', req.query.spotID)
         const allReviews = await req.models.Review.find({ 'studyspot': req.query.spotID })
-        console.log('all reviews: ', allReviews)
         let reviews = [];
         for (let i = 0; i < allReviews.length; i++) {
             reviews.push({

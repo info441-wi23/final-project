@@ -1,11 +1,3 @@
-function handleAddLocation() {
-  let callToAction = document.getElementById("add-card");
-  callToAction.appendChild(
-
-  );
-  console.log(callToAction)
-}
-
 function hideForm() {
   var x = document.getElementById("handle-spot");
   if (x.style.display == "none") {
@@ -24,8 +16,6 @@ async function init() {
 async function loadPosts() {
   document.getElementById("posts_box").innerText = "Loading...";
   let spotsJson = await fetchJSON(`/studyspots`)
-
-  console.log(spotsJson)
 
   let postsHtml = (await Promise.all(spotsJson.map(async spotsInfo => {
     const ratings = await fetchJSON(`/reviews?spotID=${spotsInfo._id}`)
@@ -56,21 +46,37 @@ async function postUrl() {
   try {
     await fetchJSON(`/studyspots`, {
       method: "POST",
-      body: { name: name, address: address, review: review, rating: rating }
+      body: {
+        name: name,
+        address: address,
+        review: review,
+        authorReview: review,
+        rating: rating,
+        initialRating: rating
+      }
     })
   } catch (error) {
-    document.getElementById("postStatus").innerText = "Error"
+    clearForm('You must be logged in to post')
     throw (error)
   }
-  document.getElementById("name").value = "";
-  document.getElementById("address").value = "";
-  document.getElementById("review").innerHTML = "";
-  document.getElementById("rating").innerHTML = "";
-  document.getElementById("postStatus").innerHTML = "successfully uploaded"
+
+  clearForm('successfully upload')
+
+  alert('success!')
+
+  hideForm()
   loadPosts();
 }
 
 function onClick(spotsInfo) {
   const location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
   window.location = location
+}
+
+function clearForm(postStatus) {
+  document.getElementById("name").value = "";
+  document.getElementById("address").value = "";
+  document.getElementById("review").value = "";
+  document.getElementById('rating').value = 1;
+  document.getElementById("postStatus").innerHTML = postStatus
 }
