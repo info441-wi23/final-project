@@ -34,7 +34,7 @@ const appSettings = {
         clientSecret: "ytD8Q~QHH0bCc9c6WzhGcdW84MnvKqKf5AMrFc3x"
     },
     authRoutes: {
-        redirect: "http://localhost:3000/redirect",
+        redirect: "http://localhost:8080/redirect",
         error: "/error",
         unauthorized: "/unauthorized"
     }

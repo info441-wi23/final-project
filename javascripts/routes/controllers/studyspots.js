@@ -5,7 +5,11 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     console.log("study spot router get is now being used");
-
+    if (req.session.isAuthenticated) {
+     console.log(req.session.account.username)
+    } else {
+     console.log("not logged in ")
+    }
     try {
         let allStudySpots = await req.models.StudySpot.find();
         res.send(allStudySpots);
@@ -30,6 +34,7 @@ router.get('/getOne', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         if (req.session.isAuthenticated) {
+               
             let allPosts = await req.models.StudySpot.find({ 'name': req.body.name })
             if (allPosts.length == 0) {
                 const newLocation = new req.models.StudySpot({
