@@ -7,13 +7,14 @@ function handleAddLocation() {
 }
 
 function hideForm() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
+  var x = document.getElementById("handle-spot");
+  if (x.style.display == "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
 }
+
 async function init() {
   await loadIdentity();
   loadPosts();
@@ -32,18 +33,34 @@ async function loadPosts() {
             alt='study spot location placeholder'
           >
         <div class="card-body">
-          <h5 class="card-title">${spotsInfo.name}</h5>
-          <p>Rating: ${spotsInfo.initialRating}/5</p>
+        <h5 class="card-title">${spotsInfo.name}</h5>
+        <p>Rating: ${spotsInfo.rating} / 5</p>
         </div>
-      </div>
-    `
+    </div>`
   }).join("\n");
   document.getElementById("posts_box").innerHTML = postsHtml;
 }
 
-//<a href="/studySpot.html">
+async function postUrl() {
+  document.getElementById("postStatus").innerHTML = "sending data..."
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let review = document.getElementById("review").value;
+  let rating = document.getElementById("rating").value;
 
-function onClick(spotsInfo) {
-  window.location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
-  onclick = "onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')"
+  try {
+    await fetchJSON(`/studyspots`, {
+      method: "POST",
+      body: { name: name, address: address, review: review, rating: rating }
+    })
+  } catch (error) {
+    document.getElementById("postStatus").innerText = "Error"
+    throw (error)
+  }
+  document.getElementById("name").value = "";
+  document.getElementById("address").value = "";
+  document.getElementById("review").innerHTML = "";
+  document.getElementById("rating").innerHTML = "";
+  document.getElementById("postStatus").innerHTML = "successfully uploaded"
+  loadPosts();
 }
