@@ -25,6 +25,8 @@ async function loadPosts() {
   document.getElementById("posts_box").innerText = "Loading...";
   let spotsJson = await fetchJSON(`/studyspots`)
 
+  console.log(spotsJson)
+
   let postsHtml = spotsJson.map(spotsInfo => {
     return `
         <div class="card" style="width: 18rem;" onclick="onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')">
@@ -63,4 +65,8 @@ async function postUrl() {
   document.getElementById("rating").innerHTML = "";
   document.getElementById("postStatus").innerHTML = "successfully uploaded"
   loadPosts();
+}
+
+function onClick(spotsInfo) {
+  window.location = `/studySpot.html?spotID=${JSON.parse(decodeURIComponent(spotsInfo))._id}`
 }
