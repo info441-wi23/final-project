@@ -37,12 +37,21 @@ button:hover {
     display: none;
     padding-right:30px;
 }
+
+.add-button {
+    border: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
 .button-form {
     display: flex; 
     justify-content:flex-end;
     padding-right:30px;
     padding-top:20px;
 }
+
 .identity-btn {
     padding-right:30px;
 }

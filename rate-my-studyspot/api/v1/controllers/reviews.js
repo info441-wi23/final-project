@@ -5,7 +5,6 @@ const router = express.Router()
 
 
 router.get('/', async (req, res) => {
-
     try {
         const allReviews = await req.models.Review.find({ 'studyspot': req.query.spotID })
         let reviews = [];
@@ -34,6 +33,7 @@ router.get('/getOne', async (req, res) => {
         let studySpot = await req.models.StudySpot.findOne({ '_id': id });
         res.status(200).send(studySpot);
     } catch (error) {
+        console.log("Error: " + error);
         res.status(500).json({ "status": "error", "error": error });
     }
 })

@@ -6,9 +6,10 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import msIdExpress from "microsoft-identity-express";
 import sessions from "express-session";
-import studySpotsRouter from "../javascripts/routes/controllers/studyspots.js"
-import reviewsRouter from '../javascripts/routes/controllers/review.js'
+import studySpotsRouter from "./api/v1/controllers/studyspots.js"
+import reviewsRouter from './api/v1/controllers/reviews.js'
 import userRouter from "../javascripts/routes/controllers/users.js"
+import bookmarkRouter from "./api/v1/controllers/bookmark.js"
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -86,6 +87,7 @@ app.get("/", (req, res) => {
 app.use("/studyspots", studySpotsRouter)
 app.use('/reviews', reviewsRouter)
 app.use("/user", userRouter)
+app.use("/bookmark", bookmarkRouter)
 
 
 app.listen(3000);

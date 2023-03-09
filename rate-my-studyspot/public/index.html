@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylesheets/homepage.css">
     <link rel="stylesheet" href="stylesheets/studyspotpage.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="javascripts/index.js"></script>
     <script src="javascripts/identity.js"></script>
     <script src="javascripts/utils.js"></script>
@@ -21,12 +22,12 @@
         <div class="identity-btn" id="identity_div">loading...</div>
     </div>
     <div class="button-form" id="form-btn"> 
-        <button onClick="hideForm()">Add Location</button>
+        <button class='add-button' onClick="hideForm()">Add Location</button>
     </div> 
-    <div class="study-form" id="handle-spot">
+    <div class="study-form" id="handle-spot" style="display: none;">
         <div class="form">
             <div>
-                <label>Name:</label>
+                <label>Location Name:</label>
                 <input type="text" name="name" id="name">
             </div>
             <div>
@@ -42,17 +43,16 @@
                     How Many Stars:
                 </label>
                 <select type="text" name="initialRating" id="rating">
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
                 </select>
             </div>
             <button onclick="postUrl()">Post</button> <span id="postStatus"></span>
     </div>
     </div>
-    
         <div class="home-page">
                     
                     <!--  -->
