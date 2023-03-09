@@ -10,10 +10,18 @@ async function init() {
     await loadIdentity()
 }
 
+function hideForm() {
+    var x = document.getElementById("handle-spot");
+    if (x.style.display == "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+
 async function loadHeading(spotID, currentReviews) {
     const locationDetails = await fetchJSON(`/reviews/getOne?id=${spotID}`)
-
-    console.log(locationDetails)
 
     let heading = document.getElementById('heading')
     heading.innerHTML = `
@@ -58,7 +66,43 @@ async function loadContent(currentReviews) {
         `
     }).join('\n')
 
+    if (reviewsHTML.length === 0) {
+        reviewsHTML = `
+        <div style="width: 100%; text-align: center">
+            No reviews yet!
+        </div>
+        `
+    }
+
     content.innerHTML = reviewsHTML
+}
+
+async function submitForm() {
+    const queryParams = new URLSearchParams(window.location.search);
+    const spotID = queryParams.get("spotID");
+
+    let name = document.getElementById("name").value;
+    let review = document.getElementById("review").value;
+    let rating = document.getElementById("rating").value;
+
+    try {
+        await fetchJSON(`/reviews`, {
+            method: 'POST',
+            body: {
+                name: name,
+                reviewText: review,
+                spotID: spotID,
+                rating: rating,
+                dateCreated: new Date()
+            }
+        })
+    } catch (error) {
+        alert('An error has occured, make sure you are logged in')
+    }
+
+    document.getElementById("name").value = ''
+    document.getElementById("review").value = ''
+    document.getElementById("rating").value = ''
 }
 
 function onClick() {

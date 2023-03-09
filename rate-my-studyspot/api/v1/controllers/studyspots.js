@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
                 const newLocation = new req.models.StudySpot({
                     name: req.body.name,
                     address: req.body.address,
-                    initialRating: req.body.initialRating,
+                    initialRating: req.body.rating,
                     dateCreated: req.body.dateCreated
                 })
                 await newLocation.save();

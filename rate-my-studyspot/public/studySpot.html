@@ -20,6 +20,36 @@
             <div class="identity-btn" id="identity_div">loading...</div>
         </div>
         <div class="location">
+            <div style="width: 100%; display: flex; flex-direction: row; justify-content: flex-end;">
+                <button class='add-button' onClick="hideForm()">Add Review</button>
+            </div>  
+            <div class="study-form" id="handle-spot" style="display: none;">
+                <div class="form">
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label>Your Review:</label>
+                        <textarea type="text" name="authorReview" id="review"></textarea>
+                    </div>
+                    <div>
+                        <label>
+                            How Many Stars:
+                        </label>
+                        <select type="text" name="initialRating" id="rating">
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="width: 100%; display: flex; flex-direction: row; justify-content: flex-end; padding: 10px;">
+                    <button onclick="submitForm()">Post</button> <span id="postStatus"></span>
+                </div>
+            </div>
             <div class="heading" id="heading">loading...</div>
             <div class="content" id="content">loading...</div>
         </div>
