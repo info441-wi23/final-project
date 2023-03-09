@@ -17,45 +17,45 @@
         <div class='title'>
             <p>Rate My Study Spot</p>
         </div>
-        <div id="identity_div">loading...</div>
+        <div id="errorInfo" class="alert alert-danger fade show" role="alert" style="opacity:0"></div>
+        <div class="identity-btn" id="identity_div">loading...</div>
     </div>
-
-    <!-- <div class="home-page">
-        <div class="form-column" hidden>
-        <div id="add-card" class="add-card">
-            <button onClick="handleAddLocation()">Add Location</button>
-            <button>Review Location</button>
-            <div id="form"> 
-            <form onSubmit="handleSubmit()" class="form">
-                <div>
-                    <label>Name:</label>
-                    <input type="text" name="name" onChange="handleChange()">
-                </div>
-                <div>
-                    <label>Address:</label>
-                    <input type="text" name="address" onChange="handleChange()">
-                </div>
-                <div>
-                    <label>Your Review:</label>
-                    <textarea type="text" name="authorReview" onChange="handleChange"></textarea>
-                </div>
-                <div>
-                    <label>
-                        How Many Stars:
-                    </label>
-                    <select type="text" name="initialRating" onChange="handleChange()">
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-        </div> -->
-        <button onclick="loadPosts()">refresh</button>
+    <div class="button-form" id="form-btn"> 
+        <button onClick="hideForm()">Add Location</button>
+    </div> 
+    <div class="study-form" id="handle-spot">
+        <div class="form">
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label>Address:</label>
+                <input type="text" name="address" id="address">
+            </div>
+            <div>
+                <label>Your Review:</label>
+                <textarea type="text" name="authorReview" id="review"></textarea>
+            </div>
+            <div>
+                <label>
+                    How Many Stars:
+                </label>
+                <select type="text" name="initialRating" id="rating">
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                </select>
+            </div>
+            <button onclick="postUrl()">Post</button> <span id="postStatus"></span>
+    </div>
+    </div>
+    
         <div class="home-page">
+                    
+                    <!--  -->
             <div class="grid" id="posts_box">
             </div>
     </div>

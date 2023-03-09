@@ -17,6 +17,7 @@ async function fetchJSON(route, options){
         responseJson = await response.json();
     }catch(error){
         let responseText = await response.text();
+        console.log(responseText)
         displayError()
         throw new Error(
             `Error fetching ${route} with options: ${options ? JSON.stringify(options) : options}

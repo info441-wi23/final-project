@@ -7,8 +7,8 @@ function handleAddLocation() {
 }
 
 function hideForm() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
+    var x = document.getElementById("handle-spot");
+    if (x.style.display == "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
@@ -31,9 +31,34 @@ async function loadPosts(){
         alt='study spot location placeholder'>
         <div class="card-body">
         <h5 class="card-title">${spotsInfo.name}</h5>
-        <p>Rating: /5</p>
+        <p>Rating: ${spotsInfo.rating} / 5</p>
         </div>
     </div>`
     }).join("\n");
     document.getElementById("posts_box").innerHTML = postsHtml;
+}
+
+async function postUrl(){
+    document.getElementById("postStatus").innerHTML = "sending data..."
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let review = document.getElementById("review").value;
+    let rating = document.getElementById("rating").value;
+
+    try{
+        await fetchJSON(`/studyspots`, {
+            method: "POST",
+            body: {name: name, address: address, review: review, rating: rating}
+        })
+    }catch(error){
+        document.getElementById("postStatus").innerText = "Error"
+        throw(error)
+    }
+    document.getElementById("name").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("review").innerHTML = "";
+    document.getElementById("rating").innerHTML = "";
+    document.getElementById("postStatus").innerHTML = "successfully uploaded"
+    loadPosts();
+    
 }
