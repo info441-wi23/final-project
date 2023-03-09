@@ -22,7 +22,7 @@ export default function Header() {
                             })
                         }}
                     >
-                        Sign in lol
+                        Sign in
                     </button>
             </div>
         </div>

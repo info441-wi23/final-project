@@ -82,6 +82,7 @@ app.use((req, res, next) => {
 
 app.use("/studyspots", studySpotsRouter)
 app.use('/reviews', reviewsRouter)
+app.use('/userInfo', userInfoRouter)
 
 app.listen(process.env.PORT || 8080);
 

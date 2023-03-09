@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import './App.css';
 import HomePage from './pages/homepage';
 import StudySpotPage from "./pages/studyspotpage";
+import UserInfoPage from "./pages/studyspotpage";
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
 					} />
 					<Route path='/location/:id' element={
 						<StudySpotPage />
+					} />
+					<Route path='/userinfo/:id' element={
+						<UserInfoPage />
 					} />
 					<Route path='*' element={<Navigate to='/' />} />
 				</Routes>
