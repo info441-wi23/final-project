@@ -25,12 +25,25 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         if (req.session.isAuthenticated) {
-            const newBookmark = new req.models.User({
-                username: req.session.account.username,
-                bookmarks: [req.body.bookmark]
-            })
-
-            await newBookmark.save()
+            // find user
+            let currentUser = await req.models.User.findOne({'username': req.session.account.username });
+            if (currentUser) { // if user has bookmarked already
+                if (currentUser.bookmarks.includes(req.body.bookmark)) {
+                    const index = currentUser.bookmarks.indexOf(req.body.bookmark);
+                    currentUser.bookmarks.splice(index, 1);
+                } else {
+                    currentUser.bookmarks.push(req.body.bookmark);
+                }
+                await currentUser.save();
+            } else { // its their first time bookmarking
+                const bookmarkArray = [];
+                bookmarkArray.push(req.body.bookmark);
+                const newUserBookmarks = req.models.User({
+                    username: req.session.account.username,
+                    bookmarks: bookmarkArray
+                });
+                await newUserBookmarks.save()
+            }
             res.status(200).send({
                 status: 'success'
             })
@@ -48,19 +61,5 @@ router.post('/', async (req, res) => {
         })
     }
 })
-
-router.patch('/', async (req, res) => {
-    let currentUser = await req.models.User.findOne({ 'username': req.session.account.username });
-    const currentBookmarks = currentUser.bookmarks;
-
-    if (currentBookmarks.includes(req.body.bookmark)) {
-        currentUser.bookmarks = currentBookmarks.filter((bookmark) => bookmark !== req.body.bookmark);
-    } else {
-        currentUser.bookmarks = [...currentBookmarks, req.body.bookmark];
-    }
-    await currentUser.save()
-})
-
-
 
 export default router

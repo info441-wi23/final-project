@@ -100,12 +100,11 @@ async function postUrl() {
 
 async function manageBookmark(id) {
   const locationId = JSON.parse(decodeURIComponent(id))
-
   try {
     const bookmarkLength = (await getBookmark()).length
     if (bookmarkLength > 0) {
       await fetchJSON('/bookmark', {
-        method: 'PATCH',
+        method: 'POST',
         body: {
           bookmark: locationId
         }
