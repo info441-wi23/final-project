@@ -45,7 +45,7 @@ function App() {
 					<Route path='/location/:id' element={
 						<StudySpotPage />
 					} />
-					<Route path='/userinfo/:id' element={
+					<Route path='/userinfo' element={
 						<UserInfoPage />
 					} />
 					<Route path='*' element={<Navigate to='/' />} />
