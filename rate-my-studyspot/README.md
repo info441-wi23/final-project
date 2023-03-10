@@ -42,8 +42,9 @@ As developers, we want to build this application out of our passion for the Univ
 # Appendix
 ## Database Schemas
 **StudySpot** =  new mongoose.Schema({
-    name : String,
-	address : String,
+    name: String,
+	address: String,
+	image: String,
 	reviewText: String,
 	rating: Number,
 	initialRating: Number,
@@ -53,7 +54,7 @@ As developers, we want to build this application out of our passion for the Univ
 
 
 **User** = new mongoose.Schema({
-	name : String,
+	name: String,
 	Bookmarks: [String]
 })
 

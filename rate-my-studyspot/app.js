@@ -15,7 +15,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 import { create } from "domain";
-// 6407ba815623b490462502cd
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 var app = express();
@@ -80,8 +80,6 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-    console.log("get called");
-    console.log(models);
     res.sendFile(__dirname + "/index.html");
 })
 app.use("/studyspots", studySpotsRouter)

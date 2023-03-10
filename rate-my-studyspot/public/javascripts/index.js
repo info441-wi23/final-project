@@ -46,7 +46,7 @@ async function loadPosts(bookmarks) {
             ${icon}
           </div>
           <img 
-            class="card-img-top" src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png' 
+            class="card-img-top" src=${spotsInfo.image} 
             alt='study spot location placeholder'
           >
         <div class="card-body" onclick="onClick('${encodeURIComponent(JSON.stringify(spotsInfo))}')">
@@ -67,6 +67,7 @@ async function postUrl() {
   document.getElementById("postStatus").innerHTML = "sending data..."
   let name = document.getElementById("name").value;
   let address = document.getElementById("address").value;
+  let image = document.getElementById("imgUrl").value;
   let review = document.getElementById("review").value;
   let rating = document.getElementById("rating").value;
 
@@ -76,6 +77,7 @@ async function postUrl() {
       body: {
         name: name,
         address: address,
+        image: image,
         review: review,
         authorReview: review,
         rating: rating,
@@ -132,6 +134,7 @@ function onClick(spotsInfo) {
 function clearForm(postStatus) {
   document.getElementById("name").value = "";
   document.getElementById("address").value = "";
+  document.getElementById("imgUrl").value = "";
   document.getElementById("review").value = "";
   document.getElementById('rating').value = 1;
   document.getElementById("postStatus").innerHTML = postStatus

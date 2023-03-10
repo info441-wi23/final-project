@@ -8,6 +8,7 @@ let models = {};
 const studySpotSchema = new mongoose.Schema({
     name: String,
     address: String,
+    image: String,
     reviewText: String,
     rating: Number,
     initialRating: Number,
