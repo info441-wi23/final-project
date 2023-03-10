@@ -23,7 +23,7 @@ As developers, we want to build this application out of our passion for the Univ
 | P1       | As a UW Student, | I want to be able to login/logout/create an account | We will use **Microsoft** authentication.
 | P2       | As a UW Student, | I want to edit or remove reviews | Use remove() from **MongoDB** with the query of user name in the location reviews.
 | P2       | As a UW Student, | I want to sort study spots available | GET a list of existing study spots from **MongoDB**, then sort by user choice (alphabetical, rating, etc.)
-| P3       | As a UW Student, | I want to save or bookmark study spots I see on the site so I can remember which ones I like. | Each user will have an object stored in **MongoDB** representing them. There will be an attribute called “bookmarks” which points to an array of study spots.
+| P3       | As a UW Student, | I want to save or bookmark study spots I see on the site so I can remember which ones I like. | Each user will have an object stored in **MongoDB** representing them. There will be an attribute called “bookmarks” which points to an array of study spots' IDs.
 
 ## End Points
 | Endpoint | Notes |
@@ -44,10 +44,9 @@ As developers, we want to build this application out of our passion for the Univ
 **StudySpot** =  new mongoose.Schema({
     name : String,
 	address : String,
-	review: String,
+	reviewText: String,
+	rating: Number,
 	initialRating: Number,
-	ratingList: Array,
-	avgRating: Number,
 	author: String,
 	dateCreated: Date
 })
@@ -55,14 +54,15 @@ As developers, we want to build this application out of our passion for the Univ
 
 **User** = new mongoose.Schema({
 	name : String,
-	Bookmarks: Array
+	Bookmarks: [String]
 })
 
 **Review** = new mongoose.Schema({
-	Name: String,
-	Author: String, 
+	name: String,
+	author: String, 
+	studyspot: { type: mongoose.Schema.Types.ObjectId, ref: "StudySpot" },
 	reviewText: String,
-	Rating: Int,
+	rating: Number,
 	dateCreated: Date
 })
 
