@@ -39,7 +39,7 @@ async function loadPosts(bookmarks) {
     } else {
       icon = ''
     }
-
+// src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png' 
     return `
         <div class="card" style="width: 18rem;">
           <div style="display: flex; width: 100%; flex-direction: row; justify-content: flex-end; padding: 10px;">
