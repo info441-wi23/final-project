@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
                 const newLocation = new req.models.StudySpot({
                     name: req.body.name,
                     author: req.session.account.username ? req.session.account.username : 'Person',
+                    image: req.body.image,
                     address: req.body.address,
                     rating: req.body.rating,
                     initialRating: req.body.initialRating,
