@@ -9,6 +9,10 @@
     height: 125px;
 }
 
+.heading {
+    text-align: center;
+    margin-top: 20px;
+}
 .title {
     padding: 10px;
     font-size: 28px;

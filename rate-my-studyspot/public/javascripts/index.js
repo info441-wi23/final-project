@@ -13,7 +13,6 @@ async function init() {
   loadPosts(bookmarks);
 }
 
-
 async function loadPosts(bookmarks) {
   document.getElementById("posts_box").innerText = "Loading...";
   let spotsJson = await fetchJSON(`/studyspots`)
