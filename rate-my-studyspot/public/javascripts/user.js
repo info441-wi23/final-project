@@ -3,7 +3,8 @@ const express = require('express')
 
 async function init(){
     await loadIdentity();
-    loadUserInfo();
+    let userInfo = await fetchJSON(`/user`)
+    console.log(userInfo)
 }
 
 async function saveUserInfo(){
