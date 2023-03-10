@@ -24,12 +24,24 @@ router.get("/myIdentity", async (req, res) => {
     }
 });
 
-router.post("/userInfo", async (req, res) => {
+// router.post("/userInfo", async (req, res) => {
 
-});
+// });
 
-router.get("/userInfo", async (req, res) => {
+// router.get("/userInfo", async (req, res) => {
+//     // try {
+//     //     if (req.session.isAuthenticated) {
+//     //         let user = await req.models.User.find({username: req.session.account.username});
 
-});
+//     //     } else {
+//     //         res.json({ status: "loggedout" });
+//     //     }
+//     // } catch (error) {
+//     //     res.status(500).send({
+//     //         status: 'error',
+//     //         error: error
+//     //     })
+//     // }
+// });
 
 export default router;
