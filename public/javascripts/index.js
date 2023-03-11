@@ -17,12 +17,9 @@ async function loadPosts(bookmarks) {
   document.getElementById("posts_box").innerText = "Loading...";
   let spotsJson = await fetchJSON(`/studyspots`)
 
-  console.log(bookmarks)
-
   let postsHtml = (await Promise.all(spotsJson.map(async spotsInfo => {
     const ratings = await fetchJSON(`/reviews?spotID=${spotsInfo._id}`)
-    console.log('spot info: ', spotsInfo._id)
-    console.log('bookmark id: ', bookmarks)
+   
     let icon;
     if (!bookmarks.includes('none')) {
       if (bookmarks.includes(spotsInfo._id)) {

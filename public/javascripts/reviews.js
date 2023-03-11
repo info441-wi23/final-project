@@ -58,9 +58,7 @@ async function loadContent(currentReviews) {
                     <div><strong>Review:</strong> ${entry.reviewText}</div>
                 </div>
                 <div class="column">
-                    <div class="image">
-                        <img src="https://cdn.pixabay.com/photo/2021/03/10/06/32/campus-6083653_1280.jpg" />
-                    </div>
+                    
                 </div>
             </div>
         </div>

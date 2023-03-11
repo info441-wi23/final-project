@@ -40,9 +40,6 @@ async function loadUserInfo(){
                     <button type="button"  onclick="onClick('${entry.id}')"class="btn btn-danger">Delete</button>
                 </div>
                 <div class="column">
-                    <div class="image">
-                        <img src="https://cdn.pixabay.com/photo/2021/03/10/06/32/campus-6083653_1280.jpg" />
-                    </div>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ const appSettings = {
         clientSecret: "ytD8Q~QHH0bCc9c6WzhGcdW84MnvKqKf5AMrFc3x"
     },
     authRoutes: {
-        redirect: "http://localhost:3000/redirect",
+        redirect: "https://ratemystudyspot.azurewebsites.net/redirect",
         error: "/error",
         unauthorized: "/unauthorized"
     }
@@ -47,7 +47,7 @@ app.use(sessions({
 
 const msid = new msIdExpress.WebAppAuthClientBuilder(appSettings).build()
 app.use(msid.initialize())
-
+// https://ratemystudyspot.azurewebsites.net/redirect
 /*
 app.get("/", (req, res) => {
     console.log(req.session.account.name);
