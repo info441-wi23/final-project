@@ -28,16 +28,16 @@ As developers, we want to build this application out of our passion for the Univ
 ## End Points
 | Endpoint | Notes |
 |:---------|:------|
-|/users/ (POST) | Create new user |
-|/users/ (GET) | Get/update user info |
+|/users/ (GET) | Get user info (all of users bookmarks and reviews) |
 |/login/ (POST) | Start new session |
 |/bookmark/ (POST) | Bookmark a study spot for a logged-in user |
 |/logout/ (POST) | End session |
-|/location/{id} (GET) | Gets location and all its reviews |
+|/review (GET) | Gets all reviews from a studyspot |
 |/bookmark/ (GET) | Gets all the user's bookmarks |
-|/rate/ (POST) | Rates an already-published study spot and updates its average rating |
-|/create/ (POST) | Create a new study spot location |
-|/review/ (POST) | Review a study spot location |
+|/review/ (POST) | Rates an already-published study spot and updates its average rating |
+|/review/ (DELETE) | Deletes a user's review if they reviewed it |
+|/studyspot/ (POST) | Create a new study spot location |
+|/studyspot/ (GET) | Gets all study spots |
 
 # Appendix
 ## Database Schemas
