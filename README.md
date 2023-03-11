@@ -12,7 +12,7 @@ As developers, we want to build this application out of our passion for the Univ
 # Technical Description
 
 ## Architectural Diagram
-![Architectural Diagram](Architectural-Diagram.png)
+![Architectural Diagram](Architectural-Diagram.jpeg)
 
 ## User Stories
 | Priority | User | Description | Technical Implementation |
