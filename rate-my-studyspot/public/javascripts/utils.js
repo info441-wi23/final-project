@@ -44,14 +44,6 @@ const escapeHTML = str => !str ? str : str.replace(/[&<>'"]/g,
     }[tag]));
 
 
-async function displayError() {
-    document.getElementById('errorInfo').innerText = 'Error: action failed (see console for more information)'
-    document.getElementById('errorInfo').style.opacity = 1
-    // pause 4 seconds
-    await new Promise(resolve => setTimeout(resolve, 4 * 1000))
-    document.getElementById('errorInfo').innerText = ''
-    document.getElementById('errorInfo').style.opacity = 0
-}
 
 function average(initialRating, currentReviews) {
     const ratingSum = currentReviews.reduce((sum, review) => sum + review.rating, 0)

@@ -3,6 +3,22 @@ import express from 'express'
 
 const router = express.Router()
 
+router.delete('/', async (req, res) => {
+    if(req.session.isAuthenticated){
+      let reviewId = req.body.reviewId
+      let review = await req.models.Review.findById(reviewId)
+      if(req.session.account.username != review.author){
+        res.status(401).json({"status": "error", "error": "you can only delete your own posts"})
+      } else {
+        await req.models.Review.deleteOne({_id: reviewId});
+        res.json({"status": "success"})
+      }
+    } else {
+      res.status(401).json({"status": "error", "error": "not logged in"})
+    }
+  
+  })
+
 
 router.get('/', async (req, res) => {
     try {

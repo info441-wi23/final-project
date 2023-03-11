@@ -17,11 +17,12 @@ router.get("/myIdentity", async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         if (req.session.isAuthenticated) {
-            const allReviews = await req.models.Review.find({ 'author': 'dngo2@uw.edu' })
+            const allReviews = await req.models.Review.find({ 'author': req.query.username})
             let userInfo = [];
             let reviews = [];
             for (let i = 0; i < allReviews.length; i++) {
                 reviews.push({
+                    "id": allReviews[i]._id,
                     "name": allReviews[i].name,
                     "author": allReviews[i].author,
                     "spotid": allReviews[i].studyspot,
@@ -34,7 +35,10 @@ router.get('/', async (req, res) => {
             const data = await req.models.User.findOne({ 'username': req.session.account.username })
             for (let i = 0; i < data.bookmarks.length; i++){
                 let studyspot = await req.models.StudySpot.find({ '_id': data.bookmarks[i] })
-                allStudyspots.push(studyspot)
+                allStudyspots.push({
+                    "name": studyspot[0].name,
+                    "image": studyspot[0].image
+                })
             }
             userInfo.push(reviews)
             userInfo.push(allStudyspots)
