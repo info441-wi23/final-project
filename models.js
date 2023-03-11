@@ -8,15 +8,18 @@ let models = {};
 const studySpotSchema = new mongoose.Schema({
     name: String,
     address: String,
+    image: String,
     reviewText: String,
     rating: Number,
+    initialRating: Number,
+    author: String,
     dateCreated: Date
 });
 models.StudySpot = mongoose.model("StudySpot", studySpotSchema);
 
 const userSchema = new mongoose.Schema({
     username: String,
-    bookmarks: Array
+    bookmarks: [String]
 })
 models.User = mongoose.model("User", userSchema);
 
