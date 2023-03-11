@@ -32,7 +32,7 @@ const appSettings = {
         clientSecret: "ytD8Q~QHH0bCc9c6WzhGcdW84MnvKqKf5AMrFc3x"
     },
     authRoutes: {
-        redirect: "https://ratemystudyspot441.azurewebsites.net/redirect",
+        redirect: "https://ratemystudyspot.azurewebsites.net/redirect",
         error: "/error",
         unauthorized: "/unauthorized"
     }
@@ -88,6 +88,6 @@ app.use("/user", userRouter)
 app.use("/bookmark", bookmarkRouter)
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 export default app;
