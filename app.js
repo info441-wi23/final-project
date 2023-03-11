@@ -6,28 +6,25 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import msIdExpress from "microsoft-identity-express";
 import sessions from "express-session";
+import studySpotsRouter from "./api/v1/controllers/studyspots.js"
+import reviewsRouter from './api/v1/controllers/reviews.js'
+import userRouter from "./api/v1/controllers/users.js"
+import bookmarkRouter from "./api/v1/controllers/bookmark.js"
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-import studySpotsRouter from "./javascripts/routes/controllers/studyspots.js"
-import reviewsRouter from './javascripts/routes/controllers/review.js'
-import userRouter from "./javascripts/routes/controllers/users.js"
 import { create } from "domain";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
 var app = express();
-app.use(cors())
 
+app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));
-// idk why but commenting this out lets me do stuff with router.get("/") and res.send
-
 const appSettings = {
     appCredentials: {
         clientId: "f2f9caa8-2681-48b8-9675-3110aaaf9e34",
@@ -35,7 +32,7 @@ const appSettings = {
         clientSecret: "ytD8Q~QHH0bCc9c6WzhGcdW84MnvKqKf5AMrFc3x"
     },
     authRoutes: {
-        redirect: "http://localhost:8080/redirect",
+        redirect: "http://localhost:3000/redirect",
         error: "/error",
         unauthorized: "/unauthorized"
     }
@@ -76,15 +73,21 @@ app.get('/error', (req, res) => {
 app.get('/unauthorized', (req, res) => {
     res.status(401).send("Error: Unauthorized")
 })
+
 app.use((req, res, next) => {
     req.models = models;
     next();
 });
 
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+})
 app.use("/studyspots", studySpotsRouter)
 app.use('/reviews', reviewsRouter)
 app.use("/user", userRouter)
+app.use("/bookmark", bookmarkRouter)
 
-app.listen(process.env.PORT || 8080);
+
+app.listen(3000);
 
 export default app;
